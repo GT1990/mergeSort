@@ -13,9 +13,6 @@ const arrayToBeSorted = [9, 4, 2, 1, 0, 3, 5, 6, 8, 7];
  */
 function merge(left, right) {
   let arr = [];
-  console.log("MERGE-----------");
-  console.log("left: ", left);
-  console.log("right: ", right);
   while (left.length && right.length) {
     if (left[0] < right[0]) {
       arr.push(left.shift());
@@ -23,7 +20,6 @@ function merge(left, right) {
       arr.push(right.shift());
     }
   }
-  console.log("sorted: ", [...arr, ...left, ...right]);
   return [...arr, ...left, ...right];
 }
 
@@ -33,17 +29,12 @@ function merge(left, right) {
  * Then the function spireles upwards executing the merge function for each recursive division.
  *
  * @param {numbers[]} arr
- * @returns {function} - Calls merge with two recursive mergeSort functions which returns sorted merged array
+ * @returns {function} - Calls merge with two recursive mergeSort functions which returns sorted merged array.
  */
 function mergeSort(arr) {
-  if (arr.length < 2) {
-    console.log("ARRAY: ", arr);
-    return arr;
-  }
+  if (arr.length < 2) return arr;
   const half = arr.length / 2;
   const left = arr.splice(0, half);
-  console.log("LEFT: ", left);
-  console.log("RIGHT: ", arr);
   return merge(mergeSort(left), mergeSort(arr));
 }
 
